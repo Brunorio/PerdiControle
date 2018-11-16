@@ -1,2 +1,0 @@
-# PerdiControle
-Fala Eleitor
