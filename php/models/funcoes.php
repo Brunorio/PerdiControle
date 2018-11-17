@@ -18,7 +18,7 @@
 		$topicos[3] = [];
 		$topicos[4] = [];
 		$topicos[5] = [];
-
+		$cont = 0;
 		while ($post = $stmt->fetch()) {
 			
 			$usuario = new Usuario( $post['id_usuario'], 
@@ -38,7 +38,7 @@
 										 $post['ativo']);
 
 			$postagens[] = $postagem;			
-			$topicos[$topico->getId() - 1][] = $postagem->getId();
+			$topicos[$topico->getId() - 1][] = $cont++;
 		}
 		
 		return array($postagens, $topicos);

@@ -22,7 +22,7 @@
 		}
 		echo "<div>";
            echo "<span class='label label-".$tipoLabel."'style='margin-right: 2px;'>".$topico."</span>";
-           if($fechada == True) echo "<span class='label label-danger'>FECHADA</span>"; 
+           if($fechada != True) echo "<span class='label label-danger'>FECHADA</span>"; 
            echo "<h3>".$titulo."</h3>";
         echo "</div>";   
         echo "<p>".$texto."</p>";

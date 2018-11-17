@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="panel-body collapse in" id="collapse01">
-                    <?php foreach ($topicos[0] as $k => $value): ?>
+                    <?php foreach ($topicos[0] as $i => $k): ?>
                         <?= inserirPostagemPaginaInicial('eleições', $postagens[$k]->getAtivo(), $postagens[$k]->getNome(), $postagens[$k]->getConteudo(), $postagens[$k]->getData(), $postagens[$k]->getUsuario()->getNome() ) ?>
                     <?php endforeach ?>
                     <?php if(count($topicos[0]) == 0) echo "Nenhum post com esse Tópico"; ?>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="panel-body collapse in" id="collapse02">
-                    <?php foreach ($topicos[3] as $k => $value): ?>
+                    <?php foreach ($topicos[3] as $i => $k): ?>
                         <?= inserirPostagemPaginaInicial('eleições', $postagens[$k]->getAtivo(), $postagens[$k]->getNome(), $postagens[$k]->getConteudo(), $postagens[$k]->getData(), $postagens[$k]->getUsuario()->getNome() ) ?>
                     <?php endforeach ?>
                     <?php if(count($topicos[3]) == 0) echo "Nenhum post com esse Tópico"; ?>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="panel-body collapse in" id="collapse06">
-                    <?php foreach ($topicos[5] as $k => $value): ?>
+                    <?php foreach ($topicos[5] as $i => $k): ?>
                         <?= inserirPostagemPaginaInicial('eleições', $postagens[$k]->getAtivo(), $postagens[$k]->getNome(), $postagens[$k]->getConteudo(), $postagens[$k]->getData(), $postagens[$k]->getUsuario()->getNome() ) ?>
                     <?php endforeach ?>
                     <?php if(count($topicos[5]) == 0) echo "Nenhum post com esse Tópico"; ?>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="panel-body collapse in" id="collapse03">
-                    <?php foreach ($topicos[1] as $k => $value): ?>
+                    <?php foreach ($topicos[1] as $i => $k): ?>
                         <?= inserirPostagemPaginaInicial('eleições', $postagens[$k]->getAtivo(), $postagens[$k]->getNome(), $postagens[$k]->getConteudo(), $postagens[$k]->getData(), $postagens[$k]->getUsuario()->getNome() ) ?>
                     <?php endforeach ?>
                     <?php if(count($topicos[1]) == 0) echo "Nenhum post com esse Tópico"; ?>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="panel-body collapse in" id="collapse04">
-                    <?php foreach ($topicos[2] as $k => $value): ?>
+                    <?php foreach ($topicos[2] as $i => $k): ?>
                         <?= inserirPostagemPaginaInicial('eleições', $postagens[$k]->getAtivo(), $postagens[$k]->getNome(), $postagens[$k]->getConteudo(), $postagens[$k]->getData(), $postagens[$k]->getUsuario()->getNome() ) ?>
                     <?php endforeach ?>
                     <?php if(count($topicos[2]) == 0) echo "Nenhum post com esse Tópico"; ?>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="panel-body collapse in" id="collapse08">
-                    <?php foreach ($topicos[4] as $k => $value): ?>
+                    <?php foreach ($topicos[4] as $i => $k): ?>
                         <?= inserirPostagemPaginaInicial('eleições', $postagens[$k]->getAtivo(), $postagens[$k]->getNome(), $postagens[$k]->getConteudo(), $postagens[$k]->getData(), $postagens[$k]->getUsuario()->getNome() ) ?>
                     <?php endforeach ?>
                     <?php if(count($topicos[4]) == 0) echo "Nenhum post com esse Tópico"; ?>
