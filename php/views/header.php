@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <base href="http://localhost/PerdiControle/">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

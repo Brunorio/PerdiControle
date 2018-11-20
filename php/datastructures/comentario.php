@@ -3,15 +3,16 @@
 class Comentario {
 	private $id;
 	private $usuario;
-	private $postagem;
 	private $comentario;
 
-	public __constructor($id, $usuario, $postagem, $comentario){
+	public function __construct($id, $usuario, $comentario){
 		$this->id = $id;
 		$this->usuario = $usuario;
-		$this->postagem = $postagem;
 		$this->comentario = $comentario;
 	}
+	public function getId() { return $this->id; }
+	public function getUsuario() { return $this->usuario; }
+	public function getComentario() { return $this->comentario; }
 }
 
 ?>

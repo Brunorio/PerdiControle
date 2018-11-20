@@ -13,6 +13,8 @@ class usuario {
 		$this->nivel = $nivel;
 	}
 
+	public function getId() { return $this->id; }
 	public function getNome() { return $this->nome; }
+	public function getNivel() { return $this->nivel; }
 }
 ?>
