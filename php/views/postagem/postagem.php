@@ -1,15 +1,13 @@
-<?php 	
-		require __DIR__.'/../../datastructures/usuario.php';
-		session_start();
-		if(isset($_SESSION['usuario'])) $usuario = $_SESSION['usuario'];
-		else $usuario = null;
+<?php 
 
 		require __DIR__.'/../../models/funcoes.php';
 		$idPostagem = $_GET['postagem'];
 		$data = getComentarioByPostagem($idPostagem);
 		$postagem = $data[1];
 		$comentarios = $data[0];
-		
+		session_start();
+		if(isset($_SESSION['usuario'])) $usuario = $_SESSION['usuario'];
+		else $usuario = null;
 		
 		
 ?>
@@ -26,7 +24,7 @@
 					<?php if($usuario != null && $usuario->getNivel()){ ?>
 					<div class="row">
 						<br>
-						<button type="button" class="btn btn-danger" data-id="<?= $comentario->getId() ?>">Excluir</button>
+						<button type="button" class="btn btn-danger excluirComentario" onclick="excluir('<?= $postagem->getId()?>', '<?= $comentario->getId()?>')">Excluir</button>
 				
 					</div>
 					<?php } ?>
@@ -36,7 +34,7 @@
 				<div>Esta postagem não possui nenhum comentário!</div>
 			<?php } ?>
 			<br><br>
-			<?php if($usuario != null) {
+			<?php if($usuario != null && $postagem->getAtivo()) {
 				$id = $usuario->getId();
 				$disabled = 'false';
 			} else {
@@ -47,7 +45,7 @@
 			  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Escrever um comentário
 			    	<?php if($disabled == 'true') {?>
-			    		<span style="margin-left: 20px; color: red; font-size: 10px;">*Você precisa estar logado para comentar</span>
+			    		<span style="margin-left: 20px; color: red; font-size: 10px;">*Comentário desativado</span>
 			    	<?php } ?>
 			    </label>
 			    <input  type="text" name="id_usuario" value="<?= $id ?>" style="display: none;">
@@ -65,6 +63,11 @@
 				<h4><?= $postagem->getData() ?></h4>
 				<h4><?= $postagem->getTopico()->getNome() ?></h4>
 				<h4><?= count($comentarios)?> <i class="fa fa-comments"></i></h4>
+				<?php if($postagem->getUsuario()->getId() == $usuario->getId() && $postagem->getAtivo()){ ?>
+				<button class="btn btn-primary fecharPostagem" data-postagem="<?= $postagem->getId() ?>">Fechar Postagem</button>
+				<?php } if(!$postagem->getAtivo()) {?>
+					<span class='label label-danger'>FECHADA</span>
+				<?php } ?>
 
 			</div>
 		</div>
@@ -76,5 +79,14 @@
 	if(disabled == 'false'){
 		$('textarea').prop('disabled',false)
 		$('button').prop('disabled',false)
+	}
+	$('.fecharPostagem').click(function(){
+		let postagem = $('.fecharPostagem').data('postagem')
+		location.href = 'php/includes/fecharPostagem.php?postagem=' + postagem
+	})
+
+	function excluir(postagem, comentario){
+		
+		location.href = 'php/includes/excluirComentario.php?postagem=' + postagem +'&comentario=' + comentario
 	}
 </script>

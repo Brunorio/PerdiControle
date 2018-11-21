@@ -47,7 +47,7 @@
 
 	function getComentarioByPostagem($idPostagem){
 		include ('conexao.php');
-
+		include __DIR__.'/../datastructures/usuario.php';
 		include __DIR__.'/../datastructures/comentario.php';
 		$sql = 'SELECT comentario.id, comentario.comentario, comentario.id_usuario, usuario.nome as nome_usuario, usuario.email, usuario.nivel FROM comentario INNER JOIN usuario ON comentario.id_usuario = usuario.id WHERE comentario.ativo = TRUE AND comentario.id_postagem = ?';
 		$stmt = $conn->prepare($sql);
@@ -67,6 +67,7 @@
 		}
 
 		$postagem = getPostagemById($idPostagem);
+
 		if(count($comentarios) == 0){			
 			if($postagem == null){
 				header('location: https://www.dicio.com.br/trapaceiro/');
@@ -112,6 +113,22 @@
 		$stmt->execute(array($id_usuario, $id_post, $comentario));
 		
 		header('location: http://localhost/PerdiControle/php/includes/postagem.php?postagem='.$id_post);
+	}
+
+	function fecharPostagem($id){
+		include ('conexao.php');
+		$sql = "UPDATE `postagem` SET `ativo` = '0' WHERE `postagem`.`id` = ?;";
+		$stmt = $conn->prepare($sql);
+		$stmt->execute(array($id));		
+		header('location: http://localhost/PerdiControle/php/includes/postagem.php?postagem='.$id);
+	}
+
+	function excluirComentario($comentario, $postagem){
+		include ('conexao.php');
+		$sql = "DELETE FROM `comentario` WHERE `comentario`.`id` = ?";
+		$stmt = $conn->prepare($sql);
+		$stmt->execute(array($comentario));		
+		header('location: http://localhost/PerdiControle/php/includes/postagem.php?postagem='.$postagem);
 	}
 
 ?>
